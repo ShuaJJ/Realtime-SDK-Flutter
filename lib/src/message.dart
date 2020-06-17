@@ -90,6 +90,7 @@ class Message with _Utilities {
   int _timestamp;
   int _patchedTimestamp;
   bool _transient;
+  Map _rrData;
   MessageStatus _status = MessageStatus.none;
 
   /// To create a new [Message].
@@ -164,10 +165,12 @@ class Message with _Utilities {
       typedMessageRawData['_lctype'] = (this as TypedMessage).type;
       map['typeMsgData'] = typedMessageRawData;
     }
+    print('yyyyy: ' + map.toString());
     return map;
   }
 
   void _loadMap(Map data) {
+    print('bbbbb: ' + data.toString());
     _currentClientID = data['clientId'];
     _conversationID = data['conversationId'];
     _id = data['id'];
