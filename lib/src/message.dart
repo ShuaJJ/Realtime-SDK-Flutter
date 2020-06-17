@@ -98,6 +98,7 @@ class Message with _Utilities {
   static Message _instanceFrom(
     Map rawData,
   ) {
+    print('rrrrrr: ' + rawData.toString());
     Message message = Message();
     final Map typeMsgData = rawData['typeMsgData'];
     String jsonString;
