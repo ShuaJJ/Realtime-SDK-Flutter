@@ -263,6 +263,8 @@ class TextMessage extends TypedMessage {
   @override
   int get type => -1;
 
+  Map get rawData => _rawData;
+
   /// To create a new [TextMessage].
   TextMessage() : super();
 
