@@ -51,6 +51,8 @@ class Message with _Utilities {
   /// The [Client.id] of the [Client] who send the [Message].
   String get fromClientID => _fromClientID;
 
+  Map get rrData => _rrData;
+
   /// The timestamp when update the [Message], unit is millisecond.
   int get patchedTimestamp => _patchedTimestamp;
 
@@ -99,9 +101,9 @@ class Message with _Utilities {
   static Message _instanceFrom(
     Map rawData,
   ) {
-    print('rrrrrr: ' + rawData.toString());
     Message message = Message();
     final Map typeMsgData = rawData['typeMsgData'];
+    message._rrData = typeMsgData;
     String jsonString;
     if (typeMsgData != null) {
       final int typeIndex = typeMsgData['_lctype'];
@@ -165,12 +167,10 @@ class Message with _Utilities {
       typedMessageRawData['_lctype'] = (this as TypedMessage).type;
       map['typeMsgData'] = typedMessageRawData;
     }
-    print('yyyyy: ' + map.toString());
     return map;
   }
 
   void _loadMap(Map data) {
-    print('bbbbb: ' + data.toString());
     _currentClientID = data['clientId'];
     _conversationID = data['conversationId'];
     _id = data['id'];
